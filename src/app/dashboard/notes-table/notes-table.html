@@ -1,0 +1,92 @@
+<div class="main-container">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search notes</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search by title or content" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  @if(tableData.data.length > 0) {
+  <div class="dashboard-container">
+    <!-- TABLE -->
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="tableData" matSort>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            <div class="empty-state">
+              <h2>No Notes Found</h2>
+            </div>
+          </td>
+        </tr>
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+          <td mat-cell *matCellDef="let n">{{ n.title }}</td>
+        </ng-container>
+
+        <!-- Content Column -->
+        <ng-container matColumnDef="content">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Content</th>
+          <td mat-cell *matCellDef="let n">{{ n.content }}</td>
+        </ng-container>
+
+        <!-- Content Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Creation Time</th>
+          <td mat-cell *matCellDef="let n">{{ n.createdAt | date : 'short' }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let n">
+            <button matTooltip="Update note" mat-icon-button color="primary" (click)="editNote(n)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button matTooltip="Delete note" mat-icon-button color="warn" (click)="deleteNote(n)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            @if(n.isArchived) {
+            <button
+              matTooltip="Unarchive note"
+              mat-icon-button
+              color="warn"
+              (click)="updateArchive(n._id, n.isArchived)"
+            >
+              <mat-icon>unarchive</mat-icon>
+            </button>
+            } @else {
+            <button
+              matTooltip="Archive note"
+              mat-icon-button
+              color="warn"
+              (click)="updateArchive(n._id, n.isArchived)"
+            >
+              <mat-icon>archive</mat-icon>
+            </button>
+            }
+          </td>
+        </ng-container>
+
+        <!-- Content Column -->
+        <ng-container matColumnDef="archived">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Archived</th>
+          <td mat-cell *matCellDef="let n">
+            <mat-chip-set>
+              <mat-chip variant="outlined" [ngClass]="n.isArchived ? 'archived-chip' : 'active-chip'">{{ n.isArchived ? 'Archived': 'Active' }}</mat-chip>
+            </mat-chip-set>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons> </mat-paginator>
+    </div>
+  </div>
+  } @else {
+  <div class="empty-state">
+    <h2>No Notes Found</h2>
+    <p>Try adding a new note or adjusting your search criteria.</p>
+  </div>
+  }
+</div>

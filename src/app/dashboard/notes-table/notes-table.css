@@ -1,0 +1,79 @@
+.main-container {
+  padding: 10px;
+}
+
+.dashboard-header .app-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+/* USER PROFILE */
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.avatar-img,
+.avatar-text {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #3f51b5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.avatar-img {
+  object-fit: cover;
+}
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.empty-state p {
+  font-size: 16px;
+  margin: 0;
+  color: #666;
+}
+
+.archived-chip {
+  background-color: #ffcccc !important;
+  color: #b00020 !important;
+  border-color: #b00020 !important;
+  --mdc-chip-container-color: linear-gradient(135deg, #fbe9e7, #ffebee);
+  box-shadow: 0 2px 4px rgba(183, 28, 28, 0.25);
+}
+
+.active-chip {
+  background-color: #c8e6c9 !important;
+  color: #1b5e20 !important;
+  border-color: #1b5e20 !important;
+
+  --mdc-chip-container-color: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  box-shadow: 0 2px 4px rgba(27, 94, 32, 0.25);
+}

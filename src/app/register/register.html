@@ -1,0 +1,65 @@
+<div class="register-container">
+  <mat-card class="register-card">
+    <mat-card-title class="mat-card-title">Register</mat-card-title>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <!-- Fill name -->
+      <mat-form-field appearance="outline" class="full-width mat-card-title">
+        <mat-label>Full name</mat-label>
+        <input matInput placeholder="Enter your full name" formControlName="fullName" />
+        <mat-error *ngIf="registerForm.get('fullName')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="full-width mat-card-title">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Enter your email" formControlName="email" type="email" />
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">
+          Enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field appearance="outline" class="full-width mat-card-title">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Enter your password"
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Toggle password visibility'"
+          [attr.aria-pressed]="!hidePassword"
+        >
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        matButton="outlined"
+        color="primary"
+        class="register-btn full-width"
+        [disabled]="registerForm.invalid"
+      >
+        Sign up
+      </button>
+    </form>
+
+    <div class="signup-section">
+      <span>Already have an account?</span>
+      <a routerLink="/login" class="signup-link">Login</a>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,140 @@
+.main-container {
+  padding: 10px;
+}
+
+.dashboard-header {
+  padding: 0 16px;
+}
+.dashboard-header .app-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+/* USER PROFILE */
+.user-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.avatar-img,
+.avatar-text {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #3f51b5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.avatar-img {
+  object-fit: cover;
+}
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+/* MAIN CONTENT */
+.dashboard-container {
+  padding: 20px;
+}
+mat-card {
+  padding: 16px;
+}
+mat-table {
+  width: 100%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.initials-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%;
+  background-color: #673ab7; /* Example background color */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dashboard-container {
+  padding: 24px;
+  position: relative;
+}
+
+/* TABLE HEADER */
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+/* .search-field {
+  width: 280px;
+} */
+
+/* FLOATING ADD BUTTON */
+.add-btn {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+}
+
+mat-paginator {
+  margin-top: 8px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px; /* Space between fields */
+  align-items: center;
+  width: 100%;
+}
+
+.dropdown-field {
+  flex: 1; /* Takes more space */
+}
+
+.search-field {
+  width: 250px; /* Fixed width dropdown */
+}
